@@ -28,15 +28,12 @@
                     <td>{{ ++$categoroyId }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->description }}</td>
-                    <td>{{ $category->status }}</td>
+                    <td class="text-success">{{ $category->status }}</td>
                     <td class="">
-                      <a class="btn btn-info text-white"  href="{{ route('category.view',$category->id) }}">View</a>
-                      <a class="btn btn-warning text-white"  href="{{ route('category.edit',$category->id) }}">Edit</a>
-                      <form action="{{ route('category.delete',$category->id) }}" method="post">
-                        @method("delete")
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
+                      <a class="btn btn-info text-white "  href="{{ route('category.view',$category->id) }}">View</a>
+                      <a class="btn btn-warning text-white "  href="{{ route('category.edit',$category->id) }}">Edit</a>
+                      <a class="btn btn-danger text-white "  href="{{ route('category.delete',$category->id) }}">Delete</a>
+                   
                     </td>
                   </tr>
                   @endforeach
@@ -52,6 +49,6 @@
       </div>
     </section>
 
-
+{{ $categories->links() }}
 
 @endsection

@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
+            $table->foreignId('item_id');
+            $table->foreignId('vendor_id');
+            
+            $table->string('status')->default('available');
+            $table->integer('quantity')->default(0);
+            $table->double('price')->default(0.00);
+            $table->date('warranty')->nullable();
+            $table->date('service_date')->nullable();
+            $table->integer('damage')->default(0)->nullable();
             $table->timestamps();
         });
     }
