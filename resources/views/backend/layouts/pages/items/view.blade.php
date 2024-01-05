@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="section">
-     <h3>item View</h3>
+     <h3>Asset View</h3>
         <hr>
               <table class="table">
                 <thead>
@@ -28,7 +28,7 @@
                                     padding:7px;" 
                           src="{{ url('/uploads/items',$item->image)}}" alt="image">
                       </td>
-                      <td>{{ $item->category->name}}</td>
+                      <td>{{ $item->category->name ?? "N/A"}}</td>
                       <td>{{ $item->name }}</td>
                       <td class="text-success">{{ $item->status }}</td>
                       <td>{{ $item->description }}</td>

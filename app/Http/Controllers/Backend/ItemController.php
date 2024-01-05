@@ -14,11 +14,12 @@ class ItemController extends Controller
     public function list()
     {   
         $items=Item::with('category')->orderBy('id', 'DESC')->paginate(5);
+        // dd($items);
         return view('backend.layouts.pages.items.list',compact("items"));
     }
     public function create()
     {
-        $categories=Category::all();
+        $categories=Category::where('status','active')->get();
         return view("backend.layouts.pages.items.create",compact("categories"));
     }
     public function store(Request $request)
@@ -50,7 +51,7 @@ class ItemController extends Controller
         "image"         =>$imageName
        ]);
        
-       toastr()->success("Item has been successfully created.");
+       toastr()->success("Asset has been successfully created.");
        return redirect()->route("item.list");
 
     }
@@ -68,10 +69,10 @@ class ItemController extends Controller
     public function update(Request $request,$id)
     {
         $validate=Validator::make($request->all(),[
-            "name"          =>"required |unique:Items,name,string,id",
+            "name"          =>"required",
             "category_id"   =>"required",
             "description"   =>"required",
-            "image"         =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            
         ]);
         if($validate->fails())
         {
@@ -93,7 +94,7 @@ class ItemController extends Controller
         "image"         =>$imageName
        ]);
        
-       toastr()->success("Item has been successfully updated.");
+       toastr()->success("Asset has been successfully updated.");
        return redirect()->route("item.list");
 
     

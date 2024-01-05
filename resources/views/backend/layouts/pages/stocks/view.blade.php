@@ -14,6 +14,7 @@
                     <th>Status</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>SubTotal</th>
                     <th>Warranty Date</th>
                     <th>Service Date</th>
         
@@ -22,18 +23,19 @@
                 <tbody> 
                   <tr>
                       <td>
-                        <img style="width:60px;
-                                    height:60px;
+                        <img style="width:80px;
+                                    height:80px;
                                     border:1px solid green;
-                                    border-radius: 10px 40px 40px 10px;
-                                    padding:7px;" 
+                                    border-radius: 10px;
+                                    padding:5px;" 
                           src="{{ url('/uploads/items',$stock->item->image)}}" alt="image">
                       </td>
-                      <td>{{ $stock->category->name}}</td>
-                      <td>{{ $stock->category->name }}</td>
-                      <td class="text-success">{{ $stock->status }}</td>
+                      <td>{{ $stock->category->name?? "N/A"}}</td>
+                      <td>{{ $stock->category->name ?? "N/A"}}</td>
+                      <td>{{ $stock->status }}</td>
                       <td>{{ $stock->quantity }}</td>
                       <td>{{ $stock->price }}</td>
+                      <td>{{ $stock->sub_total }}</td>
                       <td>{{ $stock->warranty }}</td>
                       <td>{{ $stock->service_date }}</td>
                 </tbody>

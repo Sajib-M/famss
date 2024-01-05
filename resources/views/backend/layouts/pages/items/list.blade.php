@@ -11,7 +11,7 @@
                 <a class="btn btn-primary py-2" href="{{ route('item.create') }}">+Add New</a>
             </div>
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatable table-bordered">
                 <thead>
                   <tr>
                     <th>SL</th>
@@ -24,19 +24,22 @@
                   </tr>
                 </thead>
                 <tbody>
-             @foreach ($items as $itemId => $item)
+                  @php
+                    $id =0;
+                  @endphp
+             @foreach ($items as  $item)
                     
                   <tr>
-                    <td>{{ ++$itemId }}</td>
+                    <td>{{ ++$id }}</td>
                     <td>
-                      <img style="width:60px;
-                                  height:60px;
+                      <img style="width:80px;
+                                  height:80px;
                                   border:1px solid green;
                                   border-radius: 10px 40px 40px 10px;
                                   padding:7px;" 
                         src="{{ url('/uploads/items',$item->image)}}" alt="image">
                     </td>
-                    <td>{{ $item->category->name}}</td>
+                    <td>{{ $item->category->name ?? "N/A"}}</td>
                     <td>{{ $item->name }}</td>
                     <td class="text-success">{{ $item->status }}</td>
                     <td>{{ $item->description }}</td>

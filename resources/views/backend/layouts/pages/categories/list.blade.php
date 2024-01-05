@@ -4,14 +4,14 @@
 <section class="section">
       <div class="row">
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card shadow p-4">
             <div class="card-body">
             <div class="card-header py-3 d-flex justify-content-between">
                 <h3 class="m-0 font-weight-bold text-primary">Categories List</h3>
                 <a class="btn btn-primary py-2" href="{{ route('category.create') }}">+Add New</a>
             </div>
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatable table-bordered">
                 <thead>
                   <tr>
                     <th>SL</th>
@@ -28,7 +28,7 @@
                     <td>{{ ++$categoroyId }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->description }}</td>
-                    <td class="text-success">{{ $category->status }}</td>
+                    <td>{{ $category->status == 'active' ? "Active" :"Inactive"}}</td>
                     <td class="">
                       <a class="btn btn-info text-white "  href="{{ route('category.view',$category->id) }}">View</a>
                       <a class="btn btn-warning text-white "  href="{{ route('category.edit',$category->id) }}">Edit</a>

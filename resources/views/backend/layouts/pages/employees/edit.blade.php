@@ -41,9 +41,9 @@
 
                                 <div class="mb-3">
                                     <label for="">Gender:</label><br>
-                                    <input type="radio" name="gender"   value="male"> <span>Male</span>
-                                    <input type="radio" name="gender"   value="female"> <span>Female</span>
-                                    <input type="radio" name="gender"   value="oteher"> <span>Other</span>
+                                    <input type="radio" name="gender"   value="male" {{$employee->gender == 'male' ? "checked" : " "}}> <span>Male</span>
+                                    <input type="radio" name="gender"   value="female" {{$employee->gender == 'female' ? "checked": " "}}> <span>Female</span>
+                                    <input type="radio" name="gender"   value="other" {{$employee->gender == 'other' ? "checked": " "}}> <span>Other</span>
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Salary:</label>

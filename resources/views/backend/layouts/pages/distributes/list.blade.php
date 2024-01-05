@@ -15,12 +15,11 @@
                 <thead>
                   <tr>
                     <th>SL</th>
-                    <th>Name</th>
+                    <th>Employee Name</th>
                     <th>Asset </th>
                     <th>Status</th>
-                    <th>Quantity</th>
-                    <th>Damage</th>
-                    <th>Note</th>
+                    <th>Quantity Distribution</th>
+                    <th>Distribution Date</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -28,12 +27,12 @@
                   @foreach ($distributes as $id=> $distribute)
                   <tr>
                     <td>{{ ++$id }}</td>
-                    <td>{{ $distribute->employee->full_name }}</td>
-                    <td>{{ $distribute->asset->name }}</td>
-                    <td>{{ $distribute->status }}</td>
-                    <td>{{ $distribute->quantity }}</td>
-                    <td>{{ $distribute->damage }}</td>
-                    <td>{{ $distribute->note }}</td>
+                    <td>{{ $distribute->employee->full_name ?? 'N/A'}}</td>
+                    <td>{{ $distribute->stock->item->name ?? 'N/A'}}</td>
+                    <td>{{ $distribute->status ==1 ? "Active" : "Inactive" }}</td>
+                    <td>{{ $distribute->quantity_distributed }}</td>
+                    <td>{{ $distribute->date_distributed }}</td>
+      
                     <td>
                       <a class="btn btn-info" href="{{ route('distribute.view',$distribute->id)}}">View</a>
                       <a class="btn btn-warning" href="{{ route('distribute.edit',$distribute->id)}}">Edit</a>

@@ -5,7 +5,7 @@
 
     <div class="card-header py-3 d-flex justify-content-between">
         <h3 class="m-0 font-weight-bold text-primary">Add New Distribute</h3>
-        <a class="btn btn-primary py-2" href="{{ route('stock.list') }}">Distributes List</a>
+        <a class="btn btn-primary py-2" href="{{ route('distribute.list') }}">Distributes List</a>
     </div>
 
     <div class="card-body">
@@ -26,10 +26,11 @@
 
             <div class="mb-3">
                 <label for="" class="font-weight-bold">Asset :</label>
-                    <select name="item_id" class="form-control" id="">
+                    <select name="stock_id" class="form-control" id="">
                         <option>Select Asset</option>
-                        @forelse ($items as $item)
-                            <option value="{{ $item->id }}">{{$item->name }}</option>
+                      
+                        @forelse ($stocks as $item)
+                            <option value="{{ $item->id }}">{{$item->item->name }}</option>
                             @empty
                             <option class="bg-danger text-center"> -- Not Found -- </option>
                         @endforelse
@@ -37,8 +38,13 @@
             </div>
 
             <div class="mb-3">
-                <label for="" class="font-weight-bold">Quantity :</label>
-                <input type="number" name="quantity" class="form-control"  placeholder="Enter Quantity">
+                <label for="" class="font-weight-bold">Quantity Distributed:</label>
+                <input type="number" name="quantity_distributed" class="form-control"  placeholder="Number" value="{{old('quantity_distributed')}}">
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="font-weight-bold">Distributed Date :</label>
+                <input type="date" name="date_distributed" class="form-control" value="{{old('date_distributed')}}">
             </div>
 
             <div class="mb-3">

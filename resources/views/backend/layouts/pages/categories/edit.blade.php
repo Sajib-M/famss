@@ -19,10 +19,17 @@
             </div>
             <div class="mb-3">
                 <label for="des" class="font-weight-bold">Category Name :</label>
-                <textarea name="description" class="form-control" id="des" cols="30" rows="5">
-                    {{ $category->description }}
-                </textarea>
+                <textarea name="description" class="form-control" id="des" cols="30" rows="5">{{ $category->description }}</textarea>
 
+            </div>
+
+            
+            <div class="mb-3">
+                <label for="">Status</label>
+                    <select name="status" id="" class="form-control">
+                        <option value="active" {{$category->status =='active' ? 'selected' : '' }}>Active</option>
+                        <option value="inactive" {{$category->status =='inactive' ? 'selected' : '' }}>Inactive</option>
+                    </select>
             </div>
 
             <button type="submit" class="btn btn-outline-primary">Update</button>

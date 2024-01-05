@@ -18,11 +18,18 @@
             </div>
             <div class="mb-3">
                 <label for="des" class="font-weight-bold">Category Descriptions :</label>
-                <textarea name="description" class="form-control" id="des" cols="30" rows="5">
-                   
-                </textarea>
+                <textarea name="description" class="form-control" id="des" cols="30" rows="5"></textarea>
 
             </div>
+
+           
+            <div class="mb-3">
+                <label for="">Status</label>
+                    <select name="status" id="" class="form-control">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                     </select>
+            </div> 
 
             <button type="submit" class="btn btn-outline-primary">Submit</button>
 

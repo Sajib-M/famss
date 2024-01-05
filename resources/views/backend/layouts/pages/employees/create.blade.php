@@ -42,7 +42,7 @@
                                     <label for="">Gender:</label><br>
                                     <input type="radio" name="gender"   value="male"> <span>Male</span>
                                     <input type="radio" name="gender"   value="female"> <span>Female</span>
-                                    <input type="radio" name="gender"   value="oteher"> <span>Other</span>
+                                    <input type="radio" name="gender"   value="other"> <span>Other</span>
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Salary:</label>
@@ -71,7 +71,7 @@
 
                                 <div class="mb-3">
                                     <label for="">Age:</label>
-                                    <input type="number" name="age" class="form-control" value="{{old('age')}}">
+                                    <input type="number" name="age" class="form-control" placeholder="number" value="{{old('age')}}">
                                 </div>
                     
                                 <div class="mb-3">

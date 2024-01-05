@@ -17,7 +17,9 @@
                     <select name="category_id" class="form-control" id="">
                         <option value="">Select Category</option>
                         @forelse ($categories as $category)
-                            <option value="{{ $category->id }}">{{$category->name }}</option>
+                            <option @if ($category->id == $stock->category_id)selected
+                                
+                                @endif  value="{{ $category->id }}">{{$category->name }}</option>
                             @empty
                             <option class="bg-danger text-center"> -- Not Found -- </option>
                         @endforelse
@@ -29,7 +31,9 @@
                     <select name="item_id" class="form-control" id="">
                         <option value="">Select Asset</option>
                         @forelse ($items as $item)
-                            <option value="{{ $item->id }}">{{$item->name }}</option>
+                            <option @if ($item->id == $stock->item_id)selected
+                                
+                            @endif value="{{ $item->id }}">{{$item->name }}</option>
                             @empty
                             <option class="bg-danger text-center"> -- Not Found -- </option>
                         @endforelse
@@ -48,7 +52,7 @@
 
             <div class="mb-3">
                 <label for="" class="font-weight-bold">Warannty Date :</label>
-                <input type="date" name="warannty" class="form-control"  value="{{ $stock->warannty }}">
+                <input type="date" name="warannty" class="form-control"  value="{{ $stock->warranty }}">
             </div>
 
             <div class="mb-3">

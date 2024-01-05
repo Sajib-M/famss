@@ -14,4 +14,10 @@ class Employee extends Model
     {
         return $this->first_name . " ".$this->last_name;
     }
+
+
+    public function distributions()
+    {
+        return $this->hasMany(Distribute::class);
+    }
 }
