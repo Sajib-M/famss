@@ -18,7 +18,9 @@
                     <select name="employee_id" class="form-control" id="">
                         <option>Select Employee</option>
                         @forelse ($employees as $employee)
-                            <option value="{{ $employee->id }}">{{$employee->full_name }}</option>
+                            <option @if ($employee->id == $distribute->employee_id)selected
+                                
+                            @endif value="{{ $employee->id }}">{{$employee->full_name }}</option>
                             @empty
                             <option class="bg-danger text-center"> -- Not Found -- </option>
                         @endforelse
@@ -27,10 +29,12 @@
 
             <div class="mb-3">
                 <label for="" class="font-weight-bold">Asset :</label>
-                    <select name="item_id" class="form-control" id="">
+                    <select name="stock_id" class="form-control" id="">
                         <option>Select Asset</option>
-                        @forelse ($items as $item)
-                            <option value="{{ $item->id }}">{{$item->name }}</option>
+                        @forelse ($stocks as $item)
+                            <option @if ($item->id == $distribute->stock_id)selected
+                                
+                                @endif  value="{{ $item->id }}">{{$item->item->name }}</option>
                             @empty
                             <option class="bg-danger text-center"> -- Not Found -- </option>
                         @endforelse
@@ -38,18 +42,23 @@
             </div>
 
             <div class="mb-3">
-                <label for="" class="font-weight-bold">Quantity :</label>
-                <input type="number" name="quantity" class="form-control"  placeholder="Enter Quantity" value="{{ $distribute->quantity }}">
+                <label for="" class="font-weight-bold">Quantity Distributed:</label>
+                <input type="number" name="quantity_distributed" class="form-control"  placeholder="Number" value="{{$distribute->quantity_distributed}}">
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="font-weight-bold">Distributed Date :</label>
+                <input type="date" name="date_distributed" class="form-control" value="{{$distribute->date_distributed}}">
             </div>
 
             <div class="mb-3">
                 <label for="" class="font-weight-bold">Damage :</label>
-                <input type="number" name="damage" class="form-control"  placeholder="Enter number" value="{{ $distribute->damage }}">
+                <input type="number" name="damage" class="form-control"  placeholder="Enter number" value="{{$distribute->damage}}">
             </div>
 
             <div class="mb-3">
                 <label for="" class="font-weight-bold">Note :</label>
-                <input type="text" name="note" class="form-control" placeholder="note" value="{{ $distribute->note }}">
+                <input type="text" name="note" class="form-control" placeholder="note" value="{{$distribute->note}}">
             </div>
 
            

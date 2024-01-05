@@ -16,11 +16,11 @@
                   <tr>
                     <th>SL</th>
                     <th>Image</th>
-                    <th>Name</th>
-                    <th>Category</th>
+                    <th>Asset</th>
                     <th>Status</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>Total Price</th>
                     <th>Warannty</th>
                     <th>Service </th>
                     <th>Action</th>
@@ -40,16 +40,16 @@
                         src="{{ url('/uploads/items',$stock->item->image)}}" alt="image">
                       </td>
                       <td>{{ $stock->item->name }}</td>
-                      <td>{{ $stock->category->name }}</td>
                       <td>{{ $stock->status }}</td>
                       <td>{{ $stock->quantity }}</td>
                       <td>{{ $stock->price }}.00 TK.</td>
+                      <td>{{ $stock->sub_total }}.00 TK.</td>
                       <td>{{ $stock->warranty }}</td>
                       <td>{{ $stock->service_date }}</td>
                       <td>
                           <a class="btn btn-info"  href="{{ route('stock.view',$stock->id) }}">View</a>
                           <a class="btn btn-warning" href="{{ route('stock.edit',$stock->id) }}">Edit</a>
-                          <a class="btn btn-danger" href="{{ route('stock.delete',$stock->id) }}">Delete</a>
+                          <!-- <a class="btn btn-danger" href="{{ route('stock.delete',$stock->id) }}">Delete</a> -->
                       </td>
                     </tr>
                     @endforeach

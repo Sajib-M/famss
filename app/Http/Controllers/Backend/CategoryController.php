@@ -34,7 +34,8 @@ class CategoryController extends Controller
 
        Category::create([
         "name"          =>$request->name,
-        "description"   =>$request->description
+        "description"   =>$request->description,
+        "status"   =>$request->status,
        ]);
        
        toastr()->success("Category has been successfully created.");
@@ -54,7 +55,7 @@ class CategoryController extends Controller
     public function update(Request $request,$id)
     {
         $validate=Validator::make($request->all(),[
-            "name"  =>"required |unique:categories,name,string,id",
+            "name"  =>"required",
             "description"  =>"required",
         ]);
         if($validate->fails())
@@ -66,7 +67,8 @@ class CategoryController extends Controller
         $category=Category::find($id);
         $category->update([
         "name"          =>$request->name,
-        "description"   =>$request->description
+        "description"   =>$request->description,
+        "status"        =>$request->status,
        ]);
        
        toastr()->success("Category has been successfully updated.");

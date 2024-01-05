@@ -10,11 +10,11 @@ return new class extends Migration
     {
         Schema::create('distributes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_id');
-            $table->foreignId('employee_id');
-            
-            $table->integer('quantity');
-            $table->string('status')->default('available');
+            $table->foreignId('employee_id')->constrained();
+            $table->foreignId('stock_id')->constrained();
+            $table->integer('quantity_distributed');
+            $table->date('date_distributed');
+            $table->boolean('status')->default(1);
             $table->integer('damage')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();

@@ -12,6 +12,11 @@ class Item extends Model
 
     public function category()
     {
-        return $this->BelongsTo(Category::class);
+        return $this->BelongsTo(Category::class, 'category_id', "id");
+    }
+
+    public function distributions()
+    {
+        return $this->hasMany(Distribute::class);
     }
 }

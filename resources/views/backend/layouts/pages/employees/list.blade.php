@@ -33,10 +33,10 @@
                     <tr>
                       <td>{{ ++$id }}</td>
                       <td>
-                      <img style="width:60px;
-                                  height:60px;
-                                  border:1px solid green;
-                                  border-radius: 10px 40px 40px 10px;
+                      <img style="width:70px;
+                                  height:70px;
+                                  border:2px solid green;
+                                  border-radius: 50%;
                                   padding:7px;" 
                         src="{{ url('/uploads/employees',$employee->image)}}" alt="image">
                       </td>

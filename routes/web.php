@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\PurchaseController;
 use App\Http\Controllers\Backend\PurchaseDetailController;
 use App\Http\Controllers\Backend\StockController;
 use App\Http\Controllers\Backend\VendorController;
+use App\Http\Controllers\DashboadController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,9 +20,13 @@ Route::post('/login',[AuthController::class,'login'])->name('admin.login');
 Route::prefix('admin')->group(function () {
     Route::middleware(['auth'])->group(function () {
         
-        Route::get('/',[HomeController::class, 'home'])->name('home');
+        Route::get('/dashboard',[HomeController::class, 'home'])->name('dashboard');
     
         Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+
+
+
+        Route::get('dashboard',[DashboadController::class,'dashboard'])->name('dashboard');
         
         Route::controller(CategoryController::class)->group(function(){
             Route::get('categories/list','list')->name('category.list');
@@ -87,7 +93,9 @@ Route::prefix('admin')->group(function () {
         Route::controller(PurchaseController::class)->group(function(){
             Route::get('purchase/list','list')->name('purchase.list');
             Route::get('purchase/create','create')->name('purchase.create');
+            Route::post('purchase/checkout','checkout')->name('purchase.checkout');
             Route::post('purchase/store','store')->name('purchase.store');
+
             Route::get('purchase/view/{purchaseId}','view')->name('purchase.view');
             Route::get('purchase/edit/{purchaseId}','edit')->name('purchase.edit');
             Route::put('purchase/update/{purchaseId}','update')->name('purchase.update');
@@ -104,5 +112,13 @@ Route::prefix('admin')->group(function () {
             Route::put('purchase-details/update/{purchase-detailId}','update')->name('purchase-detail.update');
             Route::get('purchase-details/delete/{purchase-detailId}','delete')->name('purchase-detail.delete');
         });
+
+        Route::controller(ReportController::class)->group(function(){
+            Route::get('report/report','Report')->name('report');
+            Route::get('report/search','ReportSearch')->name('report.search');
+           
+        });
+
+
     });  
 });

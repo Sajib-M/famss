@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('status')->default('available');
             $table->integer('quantity')->default(0);
             $table->double('price')->default(0.00);
+            $table->double('sub_total')->default(0.00);
+
             $table->date('warranty')->nullable();
             $table->date('service_date')->nullable();
             $table->integer('damage')->default(0)->nullable();

@@ -29,10 +29,10 @@ class StockController extends Controller
         $validate=Validator::make($request->all(),[
             "category_id"   =>"required",
             "item_id"       =>"required",
-            "quantity"      =>"required",
-            "price"         =>"required",
-            "warannty"      =>"required",
-            "service"       =>"required",
+            "quantity"      =>"required|numeric|min:0",
+            "price"         =>"required|numeric|min:0",
+            "warannty"      =>"required|date",
+            "service"       =>"required|date",
             
         ]);
         if($validate->fails())
@@ -46,6 +46,7 @@ class StockController extends Controller
         "item_id"       =>$request->item_id,
         "quantity"      =>$request->quantity,
         "price"         =>$request->price,
+        "sub_total"     =>$request->price * $request->quantity,
         "warranty"       =>$request->warannty,
         "service_date"   =>$request->service,
 
@@ -74,10 +75,10 @@ class StockController extends Controller
         $validate=Validator::make($request->all(),[
             "category_id"   =>"required",
             "item_id"       =>"required",
-            "quantity"   =>"required",
-            "price"   =>"required",
-            "warannty"   =>"required",
-            "service"   =>"required",
+            "quantity"      =>"required|numeric|min:0",
+            "price"         =>"required|numeric|min:0",
+            "warannty"      =>"required|date",
+            "service"       =>"required|date",
             
         ]);
         if($validate->fails())
@@ -89,11 +90,12 @@ class StockController extends Controller
         $stock=Stock::find($id);
         $stock->update([
         "category_id"   =>$request->category_id,
-        "item_id"   =>$request->item_id,
-        "quantity"   =>$request->quantity,
-        "price"   =>$request->price,
-        "warranty"   =>$request->warannty,
-        "service_date"   =>$request->service,
+        "item_id"       =>$request->item_id,
+        "quantity"      =>$request->quantity,
+        "price"         =>$request->price,
+        "sub_total"     =>$request->price * $request->quantity,
+        "warranty"      =>$request->warannty,
+        "service_date"  =>$request->service,
        
        ]);
        
@@ -102,13 +104,13 @@ class StockController extends Controller
 
     }
 
-    public function delete($id)
+  /*   public function delete($id)
     {
         Stock::destroy($id);
         toastr()->success("Stock has been successfully deleted.");
         return redirect()->back();
 
-    }
+    } */
 }
 
 

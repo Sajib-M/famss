@@ -7,10 +7,11 @@
               <table class="table">
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Employee Name</th>
                     <th>Asset</th>
                     <th>Status</th>
-                    <th>Quantity</th>
+                    <th>Quantity Distributed</th>
+                    <th>date Distributed</th>
                     <th>Damage</th>
                     <th>Note</th>
         
@@ -19,10 +20,11 @@
                 <tbody> 
                   <tr>
                       
-                   <td>{{ $distribute->employee->full_name }}</td>
-                    <td>{{ $distribute->asset->name }}</td>
-                    <td>{{ $distribute->status }}</td>
-                    <td>{{ $distribute->quantity }}</td>
+                   <td>{{ $distribute->employee->full_name ?? "N/A"}}</td>
+                    <td>{{ $distribute->stock->item->name ?? "N/A"}}</td>
+                    <td>{{ $distribute->status ==1 ? "Active": "Inactive" }}</td>
+                    <td>{{ $distribute->quantity_distributed }}</td>
+                    <td>{{ $distribute->date_distributed }}</td>
                     <td>{{ $distribute->damage }}</td>
                     <td>{{ $distribute->note }}</td>
                     

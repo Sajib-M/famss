@@ -13,18 +13,23 @@ return new class extends Migration
     {
         Schema::create('purchaes_details', function (Blueprint $table) {
             $table->id();
+            
+            $table->foreignId('vendor_id');
             $table->foreignId('category_id');
             $table->foreignId('item_id');
-            $table->foreignId('vendor_id');
-            
-            $table->string('buyer_name');
+
+            $table->string('status')->default('available');
             $table->integer('quantity')->default(0);
             $table->double('price')->default(0.00);
-            $table->integer('discount');
-            $table->double('total');
+            $table->double('sub_total')->default(0.00);
+
             $table->date('warranty')->nullable();
             $table->date('service_date')->nullable();
             $table->integer('damage')->default(0)->nullable();
+            $table->integer('discoutnt')->nullable();
+            $table->string('added_by')->nullable();
+
+            
             $table->timestamps();
         });
     }
